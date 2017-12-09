@@ -1,0 +1,18 @@
+(define tax 0.065)
+(define (reg val subtotal)
+	(cond ((eq? val -1)
+	  		(display "Subtotal: $")(display subtotal)(newline)
+			(display "Tax: $")(display (* subtotal tax))(newline)
+			(display "Total: $")(display (+ subtotal (* subtotal tax)))(newline))
+		(else
+			(display "Price: $")
+			(let ((val (read)))
+				(if
+					(eq? val -1)
+						(reg val subtotal)
+						(reg val (+ subtotal val))
+				)
+			)
+		)
+	)
+)
